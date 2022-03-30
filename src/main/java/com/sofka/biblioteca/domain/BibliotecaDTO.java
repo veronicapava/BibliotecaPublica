@@ -12,7 +12,7 @@ public class BibliotecaDTO {
     private String id = UUID.randomUUID().toString().substring(0, 10);
     private boolean disponible = true;
     private String fechaPrestamo;
-    private String nombreLibro;
+    private String nombreRecurso;
     private String tipoRecurso;
     private String tematica;
 
@@ -40,12 +40,12 @@ public class BibliotecaDTO {
         this.fechaPrestamo = fechaPrestamo;
     }
 
-    public String getNombreLibro() {
-        return nombreLibro;
+    public String getNombreRecurso() {
+        return nombreRecurso;
     }
 
-    public void setNombreLibro(String nombreLibro) {
-        this.nombreLibro = nombreLibro;
+    public void setNombreRecurso(String nombreRecurso) {
+        this.nombreRecurso = nombreRecurso;
     }
 
     public String getTipoRecurso() {
@@ -70,7 +70,7 @@ public class BibliotecaDTO {
                 "id='" + id + '\'' +
                 ", disponible=" + disponible +
                 ", fechaPrestamo='" + fechaPrestamo + '\'' +
-                ", nombreLibro='" + nombreLibro + '\'' +
+                ", nombreLibro='" + nombreRecurso + '\'' +
                 ", tipoRecurso='" + tipoRecurso + '\'' +
                 ", tematica='" + tematica + '\'' +
                 '}';
