@@ -9,4 +9,9 @@ public interface BibliotecaService {
     Mono<BibliotecaDTO> save(BibliotecaDTO biblodto);
 
     Flux<BibliotecaDTO> findAll();
+
+    Flux<BibliotecaDTO> findByTipoRecurso(String tipoRecurso);
+
+/*
+    Mono<BibliotecaDTO> findResourceByAva(String nombreLibro);*/
 }

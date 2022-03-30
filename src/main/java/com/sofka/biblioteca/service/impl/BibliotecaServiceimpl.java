@@ -23,4 +23,18 @@ public class BibliotecaServiceimpl implements BibliotecaService {
     public Flux<BibliotecaDTO> findAll() {
         return this.biblorepository.findAll();
     }
+
+    @Override
+    public Flux<BibliotecaDTO> findByTipoRecurso(String tipoRecurso) {
+        return this.biblorepository.findByTipoRecurso(tipoRecurso);
+    }
+
+   /* //Encontrar recurso y mirar si esta disponible
+    @Override
+    public Mono<BibliotecaDTO> findResourceByAva(String nombreLibro) {
+        return this.biblorepository.findResourceByAva(nombreLibro)
+                .flatMap(biblo -> {
+                    BibliotecaDTO.isDisponible() ? "El recurso está disponible" : "El recurso no esta disponible"
+                }).switchIfEmpty(Mono.empty());
+    }*/
 }

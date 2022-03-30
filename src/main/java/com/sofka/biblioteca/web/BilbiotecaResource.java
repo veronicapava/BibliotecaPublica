@@ -20,11 +20,16 @@ public class BilbiotecaResource {
         return this.bibloservice.findAll();
     }
 
-
     //Postear datos en la biblioteca
     @PostMapping("/biblioteca/post")
     @ResponseStatus(HttpStatus.CREATED)
     private Mono<BibliotecaDTO> save(@RequestBody BibliotecaDTO bibloDTO){
         return this.bibloservice.save(bibloDTO);
+    }
+
+    //Obtener por tipo de recurso
+    @GetMapping(value ="/biblioteca/recurso/{tipo}")
+    private Flux<BibliotecaDTO> findTipoDeRecurso(@PathVariable("tipo") String tipoRecurso){
+        return this.bibloservice.findByTipoRecurso(tipoRecurso);
     }
 }
