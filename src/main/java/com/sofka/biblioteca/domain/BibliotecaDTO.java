@@ -1,4 +1,4 @@
-package com.sofka.biblioteca.datos;
+package com.sofka.biblioteca.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.UUID;
 
 @Document(collection= "libreria")
-public class DatosDTO {
+public class BibliotecaDTO {
 
     @Id
     private String id = UUID.randomUUID().toString().substring(0, 10);
@@ -66,7 +66,7 @@ public class DatosDTO {
 
     @Override
     public String toString() {
-        return "DatosDTO{" +
+        return "BibliotecaDTO{" +
                 "id='" + id + '\'' +
                 ", disponible=" + disponible +
                 ", fechaPrestamo='" + fechaPrestamo + '\'' +
