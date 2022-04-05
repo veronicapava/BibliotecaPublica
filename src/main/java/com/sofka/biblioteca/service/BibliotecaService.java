@@ -15,13 +15,8 @@ public interface BibliotecaService {
     Flux<BibliotecaDTO> findByNombreRecurso(String nombreRecurso);
 
     Mono<String> findByDisponible(String id);
-/*
-    Mono<String> findByDisponible(String id);*/
-/*
-    Mono<BibliotecaDTO> findByDisponible(String nombreRecurso, BibliotecaDTO biblodto);*/
 
+    Mono<BibliotecaDTO> prestar(String id, BibliotecaDTO biblioteca);
 
-
-/*
-    Mono<BibliotecaDTO> findResourceByAva(String nombreLibro);*/
+    Mono<BibliotecaDTO> devolver(String id, BibliotecaDTO biblioteca);
 }

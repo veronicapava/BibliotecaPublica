@@ -10,7 +10,7 @@ public class BibliotecaDTO {
 
     @Id
     private String id = UUID.randomUUID().toString().substring(0, 10);
-    private boolean disponible = true;
+    private boolean disponible ;
     private String fechaPrestamo;
     private String nombreRecurso;
     private String tipoRecurso;
@@ -28,8 +28,8 @@ public class BibliotecaDTO {
         return disponible;
     }
 
-    public void setDisponible(boolean disponible) {
-        this.disponible = disponible;
+    public void setDisponible(boolean value) {
+        this.disponible = value;
     }
 
     public String getFechaPrestamo() {

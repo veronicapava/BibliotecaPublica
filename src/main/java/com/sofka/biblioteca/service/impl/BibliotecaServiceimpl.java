@@ -41,16 +41,32 @@ public class BibliotecaServiceimpl implements BibliotecaService {
                 "El recurso no esta disponible, fue prestado el: " + r.getFechaPrestamo());
     }
 
-
-
-
-
-   /* //Encontrar recurso y mirar si esta disponible
     @Override
-    public Mono<BibliotecaDTO> findResourceByAva(String nombreLibro) {
-        return this.biblorepository.findResourceByAva(nombreLibro)
-                .flatMap(biblo -> {
-                    BibliotecaDTO.isDisponible() ? "El recurso está disponible" : "El recurso no esta disponible"
-                }).switchIfEmpty(Mono.empty());
-    }*/
+    public Mono<BibliotecaDTO> prestar(String id, BibliotecaDTO biblioteca) {
+        return this.biblorepository.findById(id)
+                .flatMap(biblio -> {
+                    if(biblio.isDisponible()){
+                    biblioteca.setDisponible(false);
+                    return this.biblorepository.save(biblioteca);
+                    }
+                    return Mono.error(new Exception("El recurso ya está disponible"));
+                })
+                .switchIfEmpty(Mono.empty());
+    }
+
+    @Override
+    public Mono<BibliotecaDTO> devolver(String id, BibliotecaDTO biblioteca) {
+        return this.biblorepository.findById(id)
+                .flatMap(biblio -> {
+                    if(!biblio.isDisponible()) {
+                        biblioteca.setDisponible(true);
+                        return this.biblorepository.save(biblioteca);
+                    }
+                    return Mono.error(new Exception("El recurso ya no está disponible"));
+                })
+                .switchIfEmpty(Mono.empty());
+
+    }
+
 }
+
